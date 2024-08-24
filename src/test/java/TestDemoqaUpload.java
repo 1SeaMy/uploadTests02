@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.time.Duration;
 import java.io.File;
-
 public class TestDemoqaUpload {
     @Test
     public void test01() {
@@ -22,7 +21,6 @@ public class TestDemoqaUpload {
         WebDriver driver=new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
         driver.get("https://demoqa.com/upload-download");
         File uploadFile = new File("src/test/1.jpg");
 
