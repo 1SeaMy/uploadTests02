@@ -15,12 +15,12 @@ public class TestDemoqaUpload {
     public void test01() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options =new ChromeOptions();
-        options.addArguments("headless");
         options.addArguments("--remote-allow-origins=*");
         DesiredCapabilities cp=new DesiredCapabilities();
         cp.setCapability(ChromeOptions.CAPABILITY, options);
         options.merge(cp);
         WebDriver driver=new ChromeDriver(options);
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
         driver.get("https://demoqa.com/upload-download");
@@ -30,7 +30,9 @@ public class TestDemoqaUpload {
         upLoadButton.sendKeys(uploadFile.getAbsolutePath());
 
         WebElement uploadMes=driver.findElement(By.id("uploadedFilePath"));
+        Assert.assertTrue(uploadMes.isDisplayed());
         Assert.assertEquals(uploadMes.getText(),"C:\\fakepath\\1.jpg");
         System.out.println(uploadMes.getText());
+        driver.close();
     }
 }
